@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<style>
+  @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+}
+html {
+	font-size: 10px;
+	font-family: 'Montserrat', sans-serif;
+	scroll-behavior: smooth;
+}
+
+a {
+	text-decoration: none;
+}
+.container {
+	min-height: 100vh;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+p {
+	color: black;
+	font-size: 1.4rem;
+	margin-top: 5px;
+	line-height: 2.5rem;
+	font-weight: 300;
+	letter-spacing: 0.05rem;
+}
+.section-title {
+	font-size: 4rem;
+	font-weight: 300;
+	color: black;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.2rem;
+	text-align: center;
+}
+.section-title span {
+	color: crimson;
+}
+
+.cta {
+	display: inline-block;
+	padding: 10px 30px;
+	color: white;
+	background-color: transparent;
+	border: 2px solid crimson;
+	font-size: 2rem;
+	text-transform: uppercase;
+	letter-spacing: 0.1rem;
+	margin-top: 30px;
+	transition: 0.3s ease;
+	transition-property: background-color, color;
+}
+.cta:hover {
+	color: white;
+	background-color: crimson;
+}
+.brand h1 {
+	font-size: 3rem;
+	text-transform: uppercase;
+	color: white;
+}
+.brand h1 span {
+	color: crimson;
+}
+
+/* Header section */
+#header {
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: auto;
+}
+#header .header {
+	min-height: 8vh;
+	background-color: rgba(31, 30, 30, 0.24);
+	transition: 0.3s ease background-color;
+}
+#header .nav-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	max-width: 1300px;
+	padding: 0 10px;
+}
+#header .nav-list ul {
+	list-style: none;
+	position: absolute;
+	background-color: rgb(31, 30, 30);
+	width: 100vw;
+	height: 100vh;
+	left: 100%;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	overflow-x: hidden;
+	transition: 0.5s ease left;
+}
+#header .nav-list ul.active {
+	left: 0%;
+}
+#header .nav-list ul a {
+	font-size: 2.5rem;
+	font-weight: 500;
+	letter-spacing: 0.2rem;
+	text-decoration: none;
+	color: white;
+	text-transform: uppercase;
+	padding: 20px;
+	display: block;
+}
+#header .nav-list ul a::after {
+	content: attr(data-after);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	color: rgba(240, 248, 255, 0.021);
+	font-size: 13rem;
+	letter-spacing: 50px;
+	z-index: -1;
+	transition: 0.3s ease letter-spacing;
+}
+#header .nav-list ul li:hover a::after {
+	transform: translate(-50%, -50%) scale(1);
+	letter-spacing: initial;
+}
+#header .nav-list ul li:hover a {
+	color: crimson;
+}
+#header .hamburger {
+	height: 60px;
+	width: 60px;
+	display: inline-block;
+	border: 3px solid white;
+	border-radius: 50%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 100;
+	cursor: pointer;
+	transform: scale(0.8);
+	margin-right: 20px;
+}
+#header .hamburger:after {
+	position: absolute;
+	content: '';
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	border: 3px solid white;
+	animation: hamburger_puls 1s ease infinite;
+}
+#header .hamburger .bar {
+	height: 2px;
+	width: 30px;
+	position: relative;
+	background-color: white;
+	z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before {
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	background-color: white;
+	transition: 0.3s ease;
+	transition-property: top, bottom;
+}
+#header .hamburger .bar::after {
+	top: 8px;
+}
+#header .hamburger .bar::before {
+	bottom: 8px;
+}
+#header .hamburger.active .bar::before {
+	bottom: 0;
+}
+#header .hamburger.active .bar::after {
+	top: 0;
+}
+/* End Header section */
+
+/* Hero Section */
+#hero {
+	background-image: url(./img/bg.png);
+	background-size: cover;
+	background-position: top center;
+	position: relative;
+	z-index: 1;
+}
+#hero::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 0.7;
+	z-index: -1;
+}
+#hero .hero {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 50px;
+	justify-content: flex-start;
+}
+#hero h1 {
+	display: block;
+	width: fit-content;
+	font-size: 4rem;
+	position: relative;
+	color: transparent;
+	animation: text_reveal 0.5s ease forwards;
+	animation-delay: 1s;
+}
+#hero h1:nth-child(1) {
+	animation-delay: 1s;
+}
+#hero h1:nth-child(2) {
+	animation-delay: 2s;
+}
+#hero h1:nth-child(3) {
+	animation: text_reveal_name 0.5s ease forwards;
+	animation-delay: 3s;
+}
+#hero h1 span {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 0;
+	background-color: crimson;
+	animation: text_reveal_box 1s ease;
+	animation-delay: 0.5s;
+}
+#hero h1:nth-child(1) span {
+	animation-delay: 0.5s;
+}
+#hero h1:nth-child(2) span {
+	animation-delay: 1.5s;
+}
+#hero h1:nth-child(3) span {
+	animation-delay: 2.5s;
+}
+
+/* End Hero Section */
+
+/* skills Section */
+#experience .skills {
+	flex-direction: column;
+	text-align: center;
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#experience .service-top {
+	max-width: 500px;
+	margin: 0 auto;
+}
+#experience .service-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 50px;
+}
+#experience .service-item {
+	flex-basis: 150%;
+	width: 80%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 10px;
+	background-image: url(./img/img-1.png);
+	background-size: cover;
+	margin: 10px 5%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+#experience .service-item::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: 0.9;
+	z-index: -1;
+}
+#experience .service-bottom .icon {
+	height: 80px;
+	width: 80px;
+	margin-bottom: 20px;
+}
+#experience .service-item h3 {
+	align-self: center;
+	font-size: 2rem;
+	color: rgb(209, 36, 16);
+	margin-bottom: 10px;
+	font-weight: bolder;
+	font-style: italic;
+	text-transform: uppercase;
+}
+#experience .service-item p {
+	color: white;
+	align-self: center;
+	text-align: left;
+	font-style: italic;
+	padding-bottom: 5px;
+}
+#experience .service-item ul li {
+	color: white;
+	align-self: start;
+	text-align: left;
+	font-size: 14px;
+}
+
+/* Services Section */
+#skills .services {
+	flex-direction: column;
+	text-align: center;
+	max-width: 1500px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#skills .service-top {
+	max-width: 500px;
+	margin: 0 auto;
+}
+#skills .service-bottom {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-top: 50px;
+}
+#skills .service-item {
+	flex-basis: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	padding: 30px;
+	border-radius: 10px;
+	background-image: url(./img/img-1.png);
+	background-size: cover;
+	margin: 10px 5%;
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+}
+#skills .service-item::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: 0.9;
+	z-index: -1;
+}
+#skills .service-bottom .icon {
+	height: 80px;
+	width: 80px;
+	margin-bottom: 20px;
+}
+#skills .service-item h2 {
+	font-size: 2rem;
+	color: white;
+	margin-bottom: 10px;
+	text-transform: uppercase;
+}
+#skills .service-item p {
+	color: white;
+	text-align: left;
+}
+/* End skills Section */
+
+/* Projects section */
+#projects .projects {
+	flex-direction: column;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+#projects .projects-header h1 {
+	margin-bottom: 50px;
+}
+#projects .all-projects {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+#projects .project-item {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	width: 80%;
+	margin: 20px auto;
+	overflow: hidden;
+	border-radius: 10px;
+}
+#projects .project-info {
+	padding: 30px;
+	flex-basis: 50%;
+	height: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: center;
+	flex-direction: column;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	color: white;
+}
+#projects .project-info h1 {
+	font-size: 4rem;
+	font-weight: 500;
+}
+#projects .project-info h2 {
+	font-size: 1.8rem;
+	font-weight: 500;
+	margin-top: 10px;
+}
+#projects .project-info p {
+	color: white;
+}
+#projects .project-img {
+	flex-basis: 50%;
+	height: 300px;
+	overflow: hidden;
+	position: relative;
+}
+#projects .project-img:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+	opacity: 0.7;
+}
+#projects .project-img img {
+	transition: 0.3s ease transform;
+}
+#projects .project-item:hover .project-img img {
+	transform: scale(1.1);
+}
+/* End Projects section */
+
+/* About Section */
+#about .about {
+	flex-direction: column-reverse;
+	text-align: center;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 100px 20px;
+}
+#about .col-left {
+	width: 250px;
+	height: 360px;
+}
+#about .col-right {
+	width: 100%;
+}
+#about .col-right h2 {
+	font-size: 1.8rem;
+	font-weight: 500;
+	letter-spacing: 0.2rem;
+	margin-bottom: 10px;
+}
+#about .col-right p {
+	margin-bottom: 20px;
+}
+#about .col-right .cta {
+	color: black;
+	margin-bottom: 50px;
+	padding: 10px 20px;
+	font-size: 2rem;
+}
+#about .col-left .about-img {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	border: 10px solid white;
+}
+#about .col-left .about-img::after {
+	content: '';
+	position: absolute;
+	left: -33px;
+	top: 19px;
+	height: 98%;
+	width: 98%;
+	border: 7px solid crimson;
+	z-index: -1;
+}
+/* End About Section */
+
+/* contact Section */
+#contact .contact {
+	flex-direction: column;
+	max-width: 1200px;
+	margin: 0 auto;
+	width: 90%;
+}
+#contact .contact-items {
+	/* max-width: 400px; */
+	width: 100%;
+}
+#contact .contact-item {
+	width: 80%;
+	padding: 20px;
+	text-align: center;
+	border-radius: 10px;
+	padding: 30px;
+	margin: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	box-shadow: 0px 0px 18px 0 #0000002c;
+	transition: 0.3s ease box-shadow;
+}
+#contact .contact-item:hover {
+	box-shadow: 0px 0px 5px 0 #0000002c;
+}
+#contact .icon {
+	width: 70px;
+	margin: 0 auto;
+	margin-bottom: 10px;
+}
+#contact .contact-info h1 {
+	font-size: 2.5rem;
+	font-weight: 500;
+	margin-bottom: 5px;
+}
+#contact .contact-info h2 {
+	font-size: 1.3rem;
+	line-height: 2rem;
+	font-weight: 500;
+}
+/*End contact Section */
+
+/* Footer */
+#footer {
+	background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);
+}
+#footer .footer {
+	min-height: 200px;
+	flex-direction: column;
+	padding-top: 50px;
+	padding-bottom: 10px;
+}
+#footer h2 {
+	color: white;
+	font-weight: 500;
+	font-size: 1.8rem;
+	letter-spacing: 0.1rem;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+#footer .social-icon {
+	display: flex;
+	margin-bottom: 30px;
+}
+#footer .social-item {
+	height: 50px;
+	width: 50px;
+	margin: 0 5px;
+}
+#footer .social-item img {
+	filter: grayscale(1);
+	transition: 0.3s ease filter;
+}
+#footer .social-item:hover img {
+	filter: grayscale(0);
+}
+#footer p {
+	color: white;
+	font-size: 1.3rem;
+}
+/* End Footer */
+
+/* Keyframes */
+@keyframes hamburger_puls {
+	0% {
+		opacity: 1;
+		transform: scale(1);
+	}
+	100% {
+		opacity: 0;
+		transform: scale(1.4);
+	}
+}
+@keyframes text_reveal_box {
+	50% {
+		width: 100%;
+		left: 0;
+	}
+	100% {
+		width: 0;
+		left: 100%;
+	}
+}
+@keyframes text_reveal {
+	100% {
+		color: white;
+	}
+}
+@keyframes text_reveal_name {
+	100% {
+		color: crimson;
+		font-weight: 500;
+	}
+}
+/* End Keyframes */
+
+/* Media Query For Tablet */
+@media only screen and (min-width: 768px) {
+	.cta {
+		font-size: 2.5rem;
+		padding: 20px 60px;
+	}
+	h1.section-title {
+		font-size: 6rem;
+	}
+
+	/* Hero */
+	#hero h1 {
+		font-size: 7rem;
+	}
+	/* End Hero */
+
+	/* skills Section */
+	#skills .service-bottom .service-item {
+		flex-basis: 45%;
+		margin: 2.5%;
+	}
+	/* End skills Section */
+
+	/* Project */
+	#projects .project-item {
+		flex-direction: row;
+	}
+	#projects .project-item:nth-child(even) {
+		flex-direction: row-reverse;
+	}
+	#projects .project-item {
+		height: 400px;
+		margin: 0;
+		width: 100%;
+		border-radius: 0;
+	}
+	#projects .all-projects .project-info {
+		height: 100%;
+	}
+	#projects .all-projects .project-img {
+		height: 100%;
+	}
+	/* End Project */
+
+	/* About */
+	#about .about {
+		flex-direction: row;
+	}
+	#about .col-left {
+		width: 600px;
+		height: 400px;
+		padding-left: 60px;
+	}
+	#about .about .col-left .about-img::after {
+		left: -45px;
+		top: 34px;
+		height: 98%;
+		width: 98%;
+		border: 10px solid crimson;
+	}
+	#about .col-right {
+		text-align: left;
+		padding: 30px;
+	}
+	#about .col-right h1 {
+		text-align: left;
+	}
+	/* End About */
+
+	/* contact  */
+	#contact .contact {
+		flex-direction: column;
+		padding: 100px 0;
+		align-items: center;
+		justify-content: center;
+		min-width: 20vh;
+	}
+	#contact .contact-items {
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		justify-content: space-evenly;
+		margin: 0;
+	}
+	#contact .contact-item {
+		width: 30%;
+		margin: 0;
+		flex-direction: row;
+	}
+	#contact .contact-item .icon {
+		height: 100px;
+		width: 100px;
+	}
+	#contact .contact-item .icon img {
+		object-fit: contain;
+	}
+	#contact .contact-item .contact-info {
+		width: 100%;
+		text-align: left;
+		padding-left: 20px;
+	}
+	/* End contact  */
+}
+/* End Media Query For Tablet */
+
+/* Media Query For Desktop */
+@media only screen and (min-width: 1200px) {
+	/* header */
+	#header .hamburger {
+		display: none;
+	}
+	#header .nav-list ul {
+		position: initial;
+		display: block;
+		height: auto;
+		width: fit-content;
+		background-color: transparent;
+	}
+	#header .nav-list ul li {
+		display: inline-block;
+	}
+	#header .nav-list ul li a {
+		font-size: 1.8rem;
+	}
+	#header .nav-list ul a:after {
+		display: none;
+	}
+	/* End header */
+
+	#skills .service-bottom .service-item {
+		flex-basis: 22%;
+		margin: 1.5%;
+	}
+}
+</style>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <title>My Website</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <section id="header">
+    <div class="header container">
+      <div class="nav-bar">
+        <div class="brand">
+          <a href="#hero">
+            <h1><span>M </span>Hyma <span>Divya </span>Srivalli</h1>
+          </a>
+        </div>
+        <div class="nav-list">
+          <div class="hamburger">
+            <div class="bar"></div>
+          </div>
+          <ul>
+            <li><a href="#hero" data-after="Home">Home</a></li>
+            <li><a href="#skills" data-after="Service">Skills</a></li>
+            <li><a href="#projects" data-after="Projects">Clients</a></li>
+            <li><a href="#experience" data-after="Experience">Experience</a></li>
+            <li><a href="#about" data-after="About">About</a></li>
+            <li><a href="#contact" data-after="Contact">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Header -->
+
+
+  <!-- Hero Section  -->
+  <section id="hero">
+    <div class="hero container">
+      <div>
+        <h1>Hello, <span></span></h1>
+        <h1>My Name is <span></span></h1>
+        <h1>Hyma Divya Srivalli <span></span></h1>
+        <a href="#projects" type="button" class="cta">Portfolio</a>
+      </div>
+    </div>
+  </section>
+  <!-- End Hero Section  -->
+
+  <!-- Service Section -->
+  <section id="skills">
+    <div class="skills container">
+      <div class="service-top">
+        <h1 class="section-title">Skil<span>l</span>s</h1>
+      </div>
+        <div class="service-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/services.png" /></div>
+          <p style="color: red;">Languages:</p><span><p>C, Java, Python, JavaScript, SQL, HTML, CSS</p></span>
+          <p style="color: red;">Frameworks</p><span><p>Spring Boot, Spring Security, Hibernate, Spring AOP, Spring MVC React JS, Node JS, Express JS.</p></span>
+          <p style="color: red;">Databases</p><span><p>MongoDB, MySQL, PostgreSQL.</p></span>
+          <p style="color: red;">Operating Systems</p><span><p>Windows, MacOS, Linux.</p></span>
+          <p style="color: red;">IDE</p><span><p>IntelliJ, Visual Studio Code, Eclipse IDE,STS.</p></span>
+          <p style="color: red;">Testing/Logging</p><span><p>Junit,Postman,Log4j</p></span>
+          <p style="color: red;">Cloud skills</p><span><p>AWS (EC2, S3,RDS,EBS Lambda, CloudFront)</p></span>
+          <p style="color: red;">DevOps</p><span><p>Docker, Kubernetes, Jenkins, Git</p></span>
+          <p style="color: red;">Testing</p><span><p>JUnit, Selenium, Mockito</p></span>
+          <p style="color: red;">Tools & Platforms</p><span><p>Git, Jira, IntelliJ IDEA, Visual Studio Code</p></span>
+          <p style="color: red;">Agile Methodologies</p><span><p>Scrum, Kanban</p></span>
+        </div>
+    </div>
+  </section>
+  <!-- End Service Section -->
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="projects container">
+      <div class="projects-header">
+        <h1 class="section-title">Cli <span>ents</span></h1>
+      </div>
+      <div class="all-projects">
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Cerner Corporation</h1>
+            <p>Worked on Hospital Management System and Payment Management. I mainly worked on the payment component where we focus on ensuring the patients can do the bill payment online without reaching the hospital once they are done with the treatment using their insurance policies. The patient bills will be sent to the respective insurance company and based on the response the bill will be cleared, in case of any dues a user account will be generated which will be notified to the user and they can pay the bill online by accessing the account. I mainly focused on working with development of the payment portal. Receiving the data from the user through UI and handling the data by validating it and get the transaction response from the bank and give back to the user and update the database.</p>
+          </div>
+          <div class="project-img">
+            <img src="./img/img-1.png" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Merrill Lynch</h1>
+            <p>I worked on Rewards and Eligibilities Management of the customers. Customers are categorised into different tiers based on multiple considerations of their profile. Each tier has its own benefits, reward and eligibilities. I make sure that the customer form a particular tier should be able to access the benefits and restrict the customer who don’t.</p>
+          </div>
+          <div class="project-img">
+            <img src="./img/img-1.png" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Kia America</h1>
+            <p>I mainly focused on the Offers and Incentives component. The primary goal is to show users the available deals and offers available in their nearest location or based on specified pin number and model of the car. They can view and search for all the deals available in different locations on different models. User can get the quote by selecting a dealer from a given list, Preferred contact method and Payment method and submit their request.</p>
+          </div>
+          <div class="project-img">
+            <img src="./img/img-1.png" alt="img">
+          </div>
+        </div>
+        <div class="project-item">
+          <div class="project-info">
+            <h1>Infinite Computer Solutions</h1>
+            <p>LI worked on the Forex Payments System. It can help the customers to do the international transaction all over the world. It gathers the information form the user such as the source and destination account numbers, currencies and the amount they want to transfer from the source. All this information will be secured and encrypted .It processes the user request and completes the transaction utilizing the live forex rates.</p>
+          </div>
+          <div class="project-img">
+            <img src="./img/img-1.png" alt="img">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Projects Section -->
+  <section id="experience">
+    <div class="skills container">
+      <div class="service-top">
+        <h1 class="section-title">Exper<span>ie</span>nce</h1>
+      </div>
+      <div class="service-item">
+        <h3>Senior Full Stack Developer</h3>
+        <p>Company:Cerner Corporation</p>
+        <p>Duration: August 2022 - Present</p>
+        <ul>
+            <li>Implemented Full stack application using React for the front-end and Java Spring Boot for the back end logic.</li>	
+            <li>Developed React Function components and Spring Services associated with Patient Bill Payment System verifying with insurance coverage data. </li>
+            <li>Developed and maintained REST APIs with a user payment related business logic and ensured a seamless integration with front-end applications, improving data exchange efficiency.</li>
+            <li>Designed and developed front-end components with React using HTML, CSS, and JavaScript, ensuring responsive and interactive user interfaces for the payment of hospital bills, and requesting for the refunds.</li>
+            <li>Utilized Axios in React for making HTTP requests and handling responses from the backend.</li>
+            <li>Configured Cross-Origin Resource Sharing (CORS) in Spring Boot to enable secure communication between frontend and backend.</li>
+            <li>Integrated MongoDB for high-volume data storage, ensuring data integrity and fast query performance.</li>
+            <li>Managed communication between the backend server and the MongoDB database using Spring Data JPA.</li>
+            <li>Tested the REST APIs using a client tool Postman.</li>
+            <li>Architected and implemented cloud-native applications on AWS, leveraging services such as EC2, S3, Lambda, and RDS, optimizing for performance, scalability, and cost-efficiency.</li>
+            <li>Configured AWS Dynamo DB Multi-AZ deployments for high availability and disaster recovery.</li>
+            <li>Implemented CI/CD pipelines using Jenkins, automating the build, test, and deployment processes.</li>
+            <li>Configured AWS S3 lifecycle policies to automate data retention and archival processes, ensuring compliance and cost-efficiency.</li>
+            <li>Enhanced application security by implementing OAuth2 authentication and authorization mechanisms for login using third party application and JWT tokens for the registered accounts.</li>
+            <li>Integrated Elasticsearch for full-text search capabilities, enhancing data retrieval and search performance.</li>
+            <li>Unit tests were developed with Junit, Mockito and logging with Log4j, ensuring robust and maintainable code.</li>
+            <li>Conducted code reviews and provided mentorship to junior developers, fostering a collaborative and high-performing team environment.</li>
+            <li>Collaborated with cross-functional teams to define project requirements and deliverables, ensuring alignment with business objectives.</li>
+            <li>Utilized Agile methodologies to manage project tasks and deliverables, consistently meeting sprint goals and deadlines.</li>
+        </ul>
+      </div>
+      <div class="service-item">
+        <h3>Full Stack Developer</h3>
+        <p>Company: Merrill Lynch</p>
+        <p>Duration: December 2020 - July 2022</p>
+        <ul>
+            <li>Built and maintained RESTful services, ensuring efficient communication between front-end and back-end systems.</li>
+            <li>Used Spring Cloud Config for centralized configuration management.</li>
+            <li>Implemented MySQL for data storage and retrieval, optimizing application performance with efficient indexing and query strategies.</li>
+            <li>Designed and developed user-friendly front-end interfaces with React, enhancing user experience and engagement.</li>
+            <li>Configured and managed Eureka Server and Eureka Client for service discovery and registry.</li>
+            <li>Implemented Feign Clients for simplified service-to-service communication.</li>
+            <li>Set up API Gateway for centralized routing, load balancing, and authentication.</li>
+            <li>Leveraged AWS services to deploy and manage applications, achieving high availability and fault tolerance.</li>
+            <li>Implemented serverless architecture on AWS Lambda functions to handle asynchronous tasks, reducing operational costs.</li>
+            <li>Integrated Apache Kafka for real-time data streaming between microservices, improving data consistency and system scalability.</li>
+            <li>Automated testing and deployment processes using Jenkins, Docker and Kubernetes, ensuring consistent application quality.</li>
+            <li>Utilized Git for version control and collaboration, maintaining a clean and organized codebase.</li>
+            <li>Conducted performance tuning and optimization of applications, reducing response times and improving throughput.</li>
+            <li>Tested the application by witting JUnit test cases.</li>
+            <li>Collaborated with product owners and stakeholders to gather and refine requirements, ensuring project alignment with business goals.</li>
+            <li>Participated in Agile ceremonies, including sprint planning, daily stand-ups, and retrospectives, contributing to continuous improvement.</li>
+        </ul>
+    </div>
+    <div class="service-item">
+        <h3>Software Engineer</h3>
+        <p>Kia America</p>
+        <p>Duration: Feb 2019 - July 2020</p>
+        <ul>
+            <li>Developed and maintained enterprise-level applications using Java, Spring Framework,  delivering high-quality software solutions.</li>
+            <li>Created RESTful APIs for integration with external systems, ensuring seamless data exchange and interoperability.</li>
+            <li>Implemented AWS-based solutions for application hosting and data storage, optimizing cost and performance.</li>
+            <li>Integrated MongoDB for efficient data storage and retrieval, ensuring high performance and reliability.</li>
+            <li>Ensures the Database access and management from the backed-end server using Spring Data JPA.</li>
+            <li>Tested REST APIs using Postman for ensuring functionality, performance, and reliability.</li>
+            <li>Automated build and deployment processes using Jenkins, improving development workflow and reducing time-to-market.</li>
+            <li>Conducted code reviews and provided feedback to ensure code quality and adherence to best practices.</li>
+            <li>Utilized Git CLI for the version control.</li>
+            <li>Collaborated with QA teams to develop and execute test plans, ensuring application reliability and stability.</li>
+            <li>Participated in Agile development processes, contributing to sprint planning and backlog grooming sessions.</li>
+            <li>Resolved technical issues and implemented enhancements, improving application functionality and user satisfaction.</li>
+        </ul>
+    </div>
+    <div class="service-item">
+        <h3>Software Engineer</h3>
+        <p>Infinite Computer Solutions</p>
+        <p>Duration: May 2017 –Jan 2019</p>
+        <ul>
+            <li>Assisted in the development of web applications using Java, Spring MVC, Spring Boot contributing to project success.</li>
+            <li>Developed and maintained RESTful APIs for data exchange between front-end and back-end systems. </li>
+            <li>Utilized Postman for testing the RESTful API’s.</li>
+            <li>Implemented PostgreSQL for data storage solutions, ensuring efficient data handling and retrieval.</li>
+            <li>Automated testing processes using JUnit and Mockito, improving application reliability and performance.</li>
+            <li>Participated in code reviews and collaborated with team members to ensure code quality and consistency.</li>
+            <li>Assisted in the maintenance and enhancement of existing applications, resolving bugs and implementing new features.</li>
+            <li>Followed Agile methodologies to manage project tasks and deliverables, ensuring timely completion of development cycles.</li>
+            <li>Provided technical support and troubleshooting for production issues, ensuring minimal downtime and disruption.</li>
+        </ul>
+    </div>
+</section>
+  <!-- About Section -->
+  <section id="about">
+    <div class="about container">
+      <div class="col-left">
+        <div class="about-img">
+          <img src="./img/valli.jpeg" alt="img">
+        </div>
+      </div>
+      <div class="col-right">
+        <h1 class="section-title">About <span>me</span></h1>
+        <h2>Senior Full Stack  Developer</h2>
+        <p>As an experienced Full Stack Developer with 8 years in the field, I specialize in creating and enhancing web applications. I work proficiently with both front-end technologies like React JS and back-end frameworks such as Java Spring Boot. My skill set includes Java, Spring,Spring Boot and Node JS with Express, along with managing relational and NoSQL databases. I excel at building and maintaining RESTful APIs and setting up automated CI/CD pipelines for seamless deployment processes. With a strong background in microservices architecture and application security, I have successfully integrated various third-party APIs and deployed cloud-native applications on AWS. As a collaborative team player, I lead development teams, mentor junior developers, and consistently meet project deadlines using Agile methodologies.</p>
+        <a href="Hyma Divya Srivalli Resume.docx" class="cta">Download Resume</a>
+      </div>
+    </div>
+  </section>
+  <!-- End About Section -->
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact container">
+      <div>
+        <h1 class="section-title">Contact <span>info</span></h1>
+      </div>
+      <div class="contact-items">
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/phone.png" /></div>
+          <div class="contact-info">
+            <h1>Phone</h1>
+            <h2>+91 913 214 2779</h2>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/new-post.png"/></div>
+          <div class="contact-info">
+            <h1>Email</h1>
+            <h4>hymadivyasrivallimedicharla@gmail.com</h4>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon"><img src="https://img.icons8.com/bubbles/100/000000/map-marker.png" /></div>
+          <div class="contact-info">
+            <h1>Address</h1>
+            <h2>214 E Armour Blvd,Apt 307, Kansas City ,MO, USA</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- End Contact Section -->
+
+  <!-- Footer -->
+  <section id="footer">
+    <div class="footer container">
+      <div class="brand">
+        <h1><span>Hyma </span>Divya <span>Sri</span>valli</h1>
+      </div>
+      <h2>Your Complete Web Solution</h2>
+      <div class="social-icon">
+        <div class="social-item">
+          <a href="https://www.linkedin.com/in/hyma-divya-srivalli/"><img src="https://img.icons8.com/bubbles/100/000000/linkedin.png" /></a>
+        </div>
+        <div class="social-item">
+          <a href="https://github.com/Medicaharlasrivalli"><img src="https://img.icons8.com/bubbles/100/000000/github.png" /></a>
+        </div>
+      </div>
+      <p>Copyright © 2024 Hyma Divya Srivalli. All rights reserved</p>
+    </div>
+  </section>
+  <!-- End Footer -->
+  <script>
+    const hamburger = document.querySelector('.header .nav-bar .nav-list .hamburger');
+const mobile_menu = document.querySelector('.header .nav-bar .nav-list ul');
+const menu_item = document.querySelectorAll('.header .nav-bar .nav-list ul li a');
+const header = document.querySelector('.header.container');
+
+hamburger.addEventListener('click', () => {
+	hamburger.classList.toggle('active');
+	mobile_menu.classList.toggle('active');
+});
+
+document.addEventListener('scroll', () => {
+	var scroll_position = window.scrollY;
+	if (scroll_position > 250) {
+		header.style.backgroundColor = '#29323c';
+	} else {
+		header.style.backgroundColor = 'transparent';
+	}
+});
+
+menu_item.forEach((item) => {
+	item.addEventListener('click', () => {
+		hamburger.classList.toggle('active');
+		mobile_menu.classList.toggle('active');
+	});
+});
+
+  </script>
+</body>
+
+</html>
