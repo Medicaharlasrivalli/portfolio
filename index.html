@@ -1,5 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+	<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+       (function() {
+          emailjs.init('UfkcnT9_DZi-0AbZ-'); // Replace with your EmailJS user ID
+       })();
+    </script> 
 <style>
   @import 'https://fonts.googleapis.com/css?family=Montserrat:300, 400, 700&display=swap';
 * {
@@ -11,6 +17,68 @@ html {
 	font-size: 10px;
 	font-family: 'Montserrat', sans-serif;
 	scroll-behavior: smooth;
+}
+/* Styling for the form inputs */
+#contact-form {
+	width: 80%;
+	padding: 20px;
+	text-align: center;
+	border-radius: 10px;
+	padding: 30px;
+	margin: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	box-shadow: 0px 0px 18px 0 #0000002c;
+	transition: 0.3s ease box-shadow;
+}
+
+#contact-form label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  font-size: medium;
+  align-self: start;
+}
+
+#contact-form input[type="text"],
+#contact-form input[type="email"],
+#contact-form textarea {
+  width: 100%;
+  height: 40px;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.5rem;
+}
+
+#contact-form textarea {
+  height: 100px; /* Increase height for the textarea */
+}
+
+/* Styling for the submit button */
+#contact-form button[type="submit"] {
+  display: inline-block;
+  padding: 1.5rem 4.5rem;
+  background-color: rgb(217, 58, 58);
+  color: white;
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+#contact-form button[type="submit"]:hover {
+  background-color: rgb(237, 73, 73);
+}
+
+/* Click effect */
+#contact-form button[type="submit"]:active {
+  transform: scale(0.95);
 }
 
 a {
@@ -856,7 +924,7 @@ p {
   <section id="projects">
     <div class="projects container">
       <div class="projects-header">
-        <h1 class="section-title">Cli<span>ents</span></h1>
+        <h1 class="section-title">Cli <span>ents</span></h1>
       </div>
       <div class="all-projects">
         <div class="project-item">
@@ -1038,6 +1106,18 @@ p {
       </div>
     </div>
   </section>
+  <section>
+	<h1 class="section-title">ANY <span>Quest</span>ions?</h1>
+	<form id="contact-form">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name">
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email">
+		<label for="message">Message:</label>
+		<textarea id="message" name="message"></textarea>
+		<button type="submit">Send</button>
+	</form>
+  </section>
   <!-- End Contact Section -->
 
   <!-- Footer -->
@@ -1085,7 +1165,26 @@ menu_item.forEach((item) => {
 		mobile_menu.classList.toggle('active');
 	});
 });
-
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+    
+            // Get the form data
+            var templateParams = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                message: document.getElementById('message').value
+            };
+    
+            // Send the email
+            emailjs.send('service_q5jc746', 'template_ttw6sdd', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    alert('Message sent successfully!');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    alert('Failed to send message. Please try again later.');
+                });
+        });
   </script>
 </body>
 
